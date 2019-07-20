@@ -5,21 +5,21 @@ import javafx.scene.image.ImageView;
 
 public class PieceBishop extends Piece{
 
-//	private int xPos;
-//	private int yPos;
+//	private int xposition;
+//	private int yposition;
 //	private int type;
 	private Image image;
 //	private ImageView imageView = new ImageView();
 
-	public PieceBishop(int type, int xPos, int yPos) {
-		super(type, xPos, yPos);
+	public PieceBishop(int type, int xposition, int yposition) {
+		super(type, xposition, yposition);
 		name = "Bishop";
 //		this.type = type;
-//		this.xPos = xPos;
-//		this.yPos = yPos;
+//		this.xposition = xposition;
+//		this.yposition = yposition;
 		// TODO Auto-generated constructor stub
 		if(type==1){
-			image = new Image("file:src/ChessPiece/White_Bishop.png");
+			image = new Image("file:src/pieces_resource/White_Bishop.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -28,7 +28,7 @@ public class PieceBishop extends Piece{
 	        imageView.setCache(true);
 		}
 		else{
-			image = new Image("file:src/ChessPiece/Black_Bishop.png");
+			image = new Image("file:src/pieces_resource/Black_Bishop.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -44,18 +44,18 @@ public class PieceBishop extends Piece{
 	}
 	
 	@Override
-	public void SelectPiece(ChessBoard chessBoard) {
-		int y = this.yPos + 1;
-		chessBoard.colorSquare(this.xPos, this.yPos, true);
+	public void SelectPiece(chessBoard chessBoard) {
+		int y = this.yposition + 1;
+		chessBoard.colorSquare(this.xposition, this.yposition, true);
 		if (chessBoard.checkState && !this.isASavior)
 			return;
-		if (gameLogic.horizontalProtection(chessBoard, this.xPos, this.yPos, this.type) || gameLogic.verticalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (gameLogic.horizontalProtection(chessBoard, this.xposition, this.yposition, this.type) || gameLogic.verticalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			return;
-		if (!gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (!gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 		{
-			for(int x = this.xPos + 1; x < chessBoard.getBoardWidth() && y < chessBoard.getBoardHeight(); x++, y++)
+			for(int x = this.xposition + 1; x < chessBoard.getBoardWidth() && y < chessBoard.getBoardHeight(); x++, y++)
 			{
-				if (chessBoard.getBoardPosition(x, y) == 0)
+				if (chessBoard.getBoardpositionition(x, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
@@ -65,7 +65,7 @@ public class PieceBishop extends Piece{
 					else
 						chessBoard.colorSquare(x, y, false);
 				}
-				else if (chessBoard.getBoardPosition(x, y) == this.type)
+				else if (chessBoard.getBoardpositionition(x, y) == this.type)
 					break;
 				else
 				{
@@ -79,10 +79,10 @@ public class PieceBishop extends Piece{
 					break;
 				}
 			}
-			y = this.yPos - 1;
-			for(int x = this.xPos - 1; x >= 0 && y >= 0; x--, y--)
+			y = this.yposition - 1;
+			for(int x = this.xposition - 1; x >= 0 && y >= 0; x--, y--)
 			{
-				if (chessBoard.getBoardPosition(x, y) == 0)
+				if (chessBoard.getBoardpositionition(x, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
@@ -92,7 +92,7 @@ public class PieceBishop extends Piece{
 					else
 						chessBoard.colorSquare(x, y, false);
 				}
-				else if (chessBoard.getBoardPosition(x, y) == this.type)
+				else if (chessBoard.getBoardpositionition(x, y) == this.type)
 					break;
 				else
 				{
@@ -107,12 +107,12 @@ public class PieceBishop extends Piece{
 				}
 			}
 		}
-		if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 		{
-			y = this.yPos + 1;
-			for (int x = this.xPos - 1; x >= 0 && y < chessBoard.getBoardHeight(); x--, y++)
+			y = this.yposition + 1;
+			for (int x = this.xposition - 1; x >= 0 && y < chessBoard.getBoardHeight(); x--, y++)
 			{
-				if (chessBoard.getBoardPosition(x, y) == 0)
+				if (chessBoard.getBoardpositionition(x, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
@@ -122,7 +122,7 @@ public class PieceBishop extends Piece{
 					else
 						chessBoard.colorSquare(x, y, false);
 				}
-				else if (chessBoard.getBoardPosition(x, y) == this.type)
+				else if (chessBoard.getBoardpositionition(x, y) == this.type)
 					break;
 				else
 				{
@@ -136,10 +136,10 @@ public class PieceBishop extends Piece{
 					break;
 				}
 			}
-			y = this.yPos - 1;
-			for (int x = this.xPos + 1; x < chessBoard.getBoardWidth() && y >= 0; x++, y--)
+			y = this.yposition - 1;
+			for (int x = this.xposition + 1; x < chessBoard.getBoardWidth() && y >= 0; x++, y--)
 			{
-				if (chessBoard.getBoardPosition(x, y) == 0)
+				if (chessBoard.getBoardpositionition(x, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
@@ -149,7 +149,7 @@ public class PieceBishop extends Piece{
 					else
 						chessBoard.colorSquare(x, y, false);
 				}
-				else if (chessBoard.getBoardPosition(x, y) == this.type)
+				else if (chessBoard.getBoardpositionition(x, y) == this.type)
 					break;
 				else
 				{

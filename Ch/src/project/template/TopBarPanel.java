@@ -17,6 +17,27 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
 public class TopBarPanel extends HBox{
+    
+    
+    private Button 	resetButton;
+	public Label	whitePlayerAlert;
+	public Label	blackPlayerAlert;
+	public Label	whitePlayerclock_time;
+	public Label	blackPlayerclock_time;
+	public Label	winner;
+        public Label    Alert;
+        public Label    Alert1;
+        
+	private GridPane TopBarPanelGp;
+
+	public Button getResetButton() {
+		return resetButton;
+	}
+
+	public void setResetButton(Button resetButton) {
+		this.resetButton = resetButton;
+                
+	}	
 
 	
 	public TopBarPanel(){
@@ -31,8 +52,8 @@ public class TopBarPanel extends HBox{
                 
 		whitePlayerAlert = new Label("");
 		blackPlayerAlert = new Label("");
-		whitePlayerTimer = new Label("");
-		blackPlayerTimer = new Label("");
+		whitePlayerclock_time = new Label("");
+		blackPlayerclock_time = new Label("");
                 Alert=new Label("");
                 Alert1=new Label("");
 		winner = new Label("");
@@ -81,23 +102,5 @@ public class TopBarPanel extends HBox{
 		setHeight(height);
 	}
 	
-	private Button 	resetButton;
-	public Label	whitePlayerAlert;
-	public Label	blackPlayerAlert;
-	public Label	whitePlayerTimer;
-	public Label	blackPlayerTimer;
-	public Label	winner;
-        public Label    Alert;
-        public Label    Alert1;
-        
-	private GridPane TopBarPanelGp;
-
-	public Button getResetButton() {
-		return resetButton;
-	}
-
-	public void setResetButton(Button resetButton) {
-		this.resetButton = resetButton;
-                
-	}	
+	
 }

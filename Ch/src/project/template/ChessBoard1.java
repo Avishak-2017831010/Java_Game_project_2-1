@@ -9,6 +9,6 @@ package project.template;
  *
  * @author Avi
  */
-public class ChessBoard1 {
+public class chessBoard1 {
     
 }

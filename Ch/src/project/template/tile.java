@@ -15,9 +15,9 @@ public class tile extends Group{
 	// constructor for the class
 		public tile(int i) {
 			// Make a new Rectangle and Translate, add the Translate to the Rectangle, add the Rectagle to the Group
-			pos = new Translate();
+			position = new Translate();
 			r = new Rectangle();
-			r.getTransforms().add(pos);
+			r.getTransforms().add(position);
                         
 			if(i==0){
 			r.setFill(Color.BLACK);
@@ -47,8 +47,8 @@ public class tile extends Group{
 		public void relocate(double x, double y) {
 			// call the superclass method and update the relevant transform
 			super.relocate(x, y);
-			pos.setX(x);
-			pos.setY(y);
+			position.setX(x);
+			position.setY(y);
 		}
 		
 		public void highlighttile(Color color) {
@@ -74,6 +74,6 @@ public class tile extends Group{
 		
 		// private fields of the class
 		private Rectangle r;
-		private Translate pos; 		//translate to set the position of this tile
+		private Translate position; 		//translate to set the positionition of this tile
 		private boolean isHighlighted = false;
 }

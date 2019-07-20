@@ -5,18 +5,18 @@ import javafx.scene.image.ImageView;
 
 public class PieceRook extends Piece {
 
-//	private int xPos;
-//	private int yPos;
+//	private int xposition;
+//	private int yposition;
 //	private int type;
 	private Image image;
 //	private ImageView imageView = new ImageView(); 
 
-	public PieceRook(int type, int xPos, int yPos) {
-		super(type, xPos, yPos);
+	public PieceRook(int type, int xposition, int yposition) {
+		super(type, xposition, yposition);
 		name = "Rook";
 		// TODO Auto-generated constructor stub
 		if(type==1){
-			image = new Image("file:src/ChessPiece/White_Rook.png");
+			image = new Image("file:src/pieces_resource/White_Rook.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -24,7 +24,7 @@ public class PieceRook extends Piece {
 	        imageView.setSmooth(true);
 	        imageView.setCache(true);
 		}else{
-			image = new Image("file:src/ChessPiece/Black_Rook.png");
+			image = new Image("file:src/pieces_resource/Black_Rook.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -40,118 +40,118 @@ public class PieceRook extends Piece {
 	}
 	
 	@Override
-	public void SelectPiece(ChessBoard chessBoard) {
-		chessBoard.colorSquare(this.xPos, this.yPos, true);
+	public void SelectPiece(chessBoard chessBoard) {
+		chessBoard.colorSquare(this.xposition, this.yposition, true);
 		if (chessBoard.checkState && !this.isASavior)
 			return;
-		if (gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type) || gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type) || gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			return;
-		if (!gameLogic.horizontalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (!gameLogic.horizontalProtection(chessBoard, this.xposition, this.yposition, this.type))
 		{
-			for (int y = this.yPos - 1; y >= 0; y--)
+			for (int y = this.yposition - 1; y >= 0; y--)
 			{
-				if (chessBoard.getBoardPosition(this.xPos, y) == 0)
+				if (chessBoard.getBoardpositionition(this.xposition, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, y, this.type))
-							chessBoard.colorSquare(this.xPos, y, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, y, this.type))
+							chessBoard.colorSquare(this.xposition, y, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, y, false);
+						chessBoard.colorSquare(this.xposition, y, false);
 				}
-				else if (chessBoard.getBoardPosition(this.xPos, y) == this.type)
+				else if (chessBoard.getBoardpositionition(this.xposition, y) == this.type)
 					break;
 				else
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, y, this.type))
-							chessBoard.colorSquare(this.xPos, y, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, y, this.type))
+							chessBoard.colorSquare(this.xposition, y, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, y, false);
+						chessBoard.colorSquare(this.xposition, y, false);
 					break;
 				}
 			}
-			for (int y = this.yPos + 1; y < chessBoard.getBoardHeight(); y++)
+			for (int y = this.yposition + 1; y < chessBoard.getBoardHeight(); y++)
 			{
-				if (chessBoard.getBoardPosition(this.xPos, y) == 0)
+				if (chessBoard.getBoardpositionition(this.xposition, y) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, y, this.type))
-							chessBoard.colorSquare(this.xPos, y, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, y, this.type))
+							chessBoard.colorSquare(this.xposition, y, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, y, false);
+						chessBoard.colorSquare(this.xposition, y, false);
 				}
-				else if (chessBoard.getBoardPosition(this.xPos, y) == this.type)
+				else if (chessBoard.getBoardpositionition(this.xposition, y) == this.type)
 					break;
 				else
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, y, this.type))
-							chessBoard.colorSquare(this.xPos, y, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, y, this.type))
+							chessBoard.colorSquare(this.xposition, y, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, y, false);
+						chessBoard.colorSquare(this.xposition, y, false);
 					break;
 				}
 			}
 		}
-		if (!gameLogic.verticalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (!gameLogic.verticalProtection(chessBoard, this.xposition, this.yposition, this.type))
 		{
-			for (int x = this.xPos - 1; x >= 0; x--)
+			for (int x = this.xposition - 1; x >= 0; x--)
 			{
-				if (chessBoard.getBoardPosition(x, this.yPos) == 0)
+				if (chessBoard.getBoardpositionition(x, this.yposition) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, x, this.yPos, this.type))
-							chessBoard.colorSquare(x, this.yPos, false);
+						if (gameLogic.isThisProtecting(chessBoard, x, this.yposition, this.type))
+							chessBoard.colorSquare(x, this.yposition, false);
 					}
 					else
-						chessBoard.colorSquare(x, this.yPos, false);
+						chessBoard.colorSquare(x, this.yposition, false);
 				}
-				else if (chessBoard.getBoardPosition(x, this.yPos) == this.type)
+				else if (chessBoard.getBoardpositionition(x, this.yposition) == this.type)
 					break;
 				else
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, x, this.yPos, this.type))
-							chessBoard.colorSquare(x, this.yPos, false);
+						if (gameLogic.isThisProtecting(chessBoard, x, this.yposition, this.type))
+							chessBoard.colorSquare(x, this.yposition, false);
 					}
 					else
-						chessBoard.colorSquare(x, this.yPos, false);
+						chessBoard.colorSquare(x, this.yposition, false);
 					break;
 				}
 			}
-			for (int x = this.xPos + 1; x < chessBoard.getBoardWidth(); x++)
+			for (int x = this.xposition + 1; x < chessBoard.getBoardWidth(); x++)
 			{
-				if (chessBoard.getBoardPosition(x, this.yPos) == 0)
+				if (chessBoard.getBoardpositionition(x, this.yposition) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, x, this.yPos, this.type))
-							chessBoard.colorSquare(x, this.yPos, false);
+						if (gameLogic.isThisProtecting(chessBoard, x, this.yposition, this.type))
+							chessBoard.colorSquare(x, this.yposition, false);
 					}
 					else
-						chessBoard.colorSquare(x, this.yPos, false);
+						chessBoard.colorSquare(x, this.yposition, false);
 				}
-				else if (chessBoard.getBoardPosition(x, this.yPos) == this.type)
+				else if (chessBoard.getBoardpositionition(x, this.yposition) == this.type)
 					break;
 				else
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, x, this.yPos, this.type))
-							chessBoard.colorSquare(x, this.yPos, false);
+						if (gameLogic.isThisProtecting(chessBoard, x, this.yposition, this.type))
+							chessBoard.colorSquare(x, this.yposition, false);
 					}
 					else
-						chessBoard.colorSquare(x, this.yPos, false);
+						chessBoard.colorSquare(x, this.yposition, false);
 					break;
 				}
 			}

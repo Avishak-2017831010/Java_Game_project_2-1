@@ -5,19 +5,19 @@ import javafx.scene.image.ImageView;
 
 public class PiecePawn extends Piece{
 
-//	private int xPos;
-//	private int yPos;
+//	private int xposition;
+//	private int yposition;
 //	private int type;
 	private Image image;
 //	private ImageView imageView = new ImageView(); 
 	
-	public PiecePawn(int type, int xPos, int yPos) {
-		super(type, xPos, yPos);
+	public PiecePawn(int type, int xposition, int yposition) {
+		super(type, xposition, yposition);
 		name = "Pawn";
 		// TODO Auto-generated constructor stub
 		// TODO tester les paramètres 
 		if(type==1){
-			image = new Image("file:src/ChessPiece/White_Pawn.png");
+			image = new Image("file:src/pieces_resource/White_Pawn.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -25,7 +25,7 @@ public class PiecePawn extends Piece{
 	        imageView.setSmooth(true);
 	        imageView.setCache(true);
 		}else{
-			image = new Image("file:src/ChessPiece/Black_Pawn.png");
+			image = new Image("file:src/pieces_resource/Black_Pawn.png");
 			imageView.setImage(image);
 			imageView.fitHeightProperty();
 			imageView.fitWidthProperty();
@@ -41,118 +41,118 @@ public class PiecePawn extends Piece{
 	}
 
 	@Override
-	public void SelectPiece(ChessBoard chessBoard) {
-		chessBoard.colorSquare(this.xPos, this.yPos, true);
+	public void SelectPiece(chessBoard chessBoard) {
+		chessBoard.colorSquare(this.xposition, this.yposition, true);
 		if (chessBoard.checkState && !this.isASavior)
 			return;
-		if (gameLogic.horizontalProtection(chessBoard, this.xPos, this.yPos, this.type))
+		if (gameLogic.horizontalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			return;
 		if (this.type == 1)
 		{
-			if (!gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type) && !gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+			if (!gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type) && !gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			{
-				if (this.yPos - 1 >= 0 && chessBoard.getBoardPosition(this.xPos, this.yPos - 1) == 0)
+				if (this.yposition - 1 >= 0 && chessBoard.getBoardpositionition(this.xposition, this.yposition - 1) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, this.yPos - 1, this.type))
-							chessBoard.colorSquare(this.xPos, this.yPos - 1, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, this.yposition - 1, this.type))
+							chessBoard.colorSquare(this.xposition, this.yposition - 1, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, this.yPos - 1, false);
+						chessBoard.colorSquare(this.xposition, this.yposition - 1, false);
 				}
-				if (this.isFirstTime == true && chessBoard.getBoardPosition(this.xPos, this.yPos - 2) == 0)
+				if (this.isFirstTime == true && chessBoard.getBoardpositionition(this.xposition, this.yposition - 2) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, this.yPos - 2, this.type))
-							chessBoard.colorSquare(this.xPos, this.yPos - 2, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, this.yposition - 2, this.type))
+							chessBoard.colorSquare(this.xposition, this.yposition - 2, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, this.yPos - 2, false);
+						chessBoard.colorSquare(this.xposition, this.yposition - 2, false);
 				}
 			}
-			if (!gameLogic.verticalProtection(chessBoard, this.xPos, this.yPos, this.type))
+			if (!gameLogic.verticalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			{
-				if (!gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+				if (!gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 				{
-					if (this.yPos - 1 >= 0 && this.xPos - 1 >= 0 && chessBoard.getBoardPosition(this.xPos - 1, this.yPos - 1) != this.type && chessBoard.getBoardPosition(this.xPos - 1, this.yPos - 1) != 0)
+					if (this.yposition - 1 >= 0 && this.xposition - 1 >= 0 && chessBoard.getBoardpositionition(this.xposition - 1, this.yposition - 1) != this.type && chessBoard.getBoardpositionition(this.xposition - 1, this.yposition - 1) != 0)
 					{
 						if (chessBoard.checkState)
 						{
-							if (gameLogic.isThisProtecting(chessBoard, this.xPos - 1, this.yPos - 1, this.type))
-								chessBoard.colorSquare(this.xPos - 1, this.yPos - 1, false);
+							if (gameLogic.isThisProtecting(chessBoard, this.xposition - 1, this.yposition - 1, this.type))
+								chessBoard.colorSquare(this.xposition - 1, this.yposition - 1, false);
 						}
 						else
-							chessBoard.colorSquare(this.xPos - 1, this.yPos - 1, false);
+							chessBoard.colorSquare(this.xposition - 1, this.yposition - 1, false);
 					}
 				}
-				if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+				if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 				{
-					if (this.yPos - 1 >= 0 && this.xPos + 1 < chessBoard.getBoardWidth() && chessBoard.getBoardPosition(this.xPos + 1, this.yPos - 1) != this.type && chessBoard.getBoardPosition(this.xPos + 1, this.yPos - 1) != 0)
+					if (this.yposition - 1 >= 0 && this.xposition + 1 < chessBoard.getBoardWidth() && chessBoard.getBoardpositionition(this.xposition + 1, this.yposition - 1) != this.type && chessBoard.getBoardpositionition(this.xposition + 1, this.yposition - 1) != 0)
 					{
 						if (chessBoard.checkState)
 						{
-							if (gameLogic.isThisProtecting(chessBoard, this.xPos + 1, this.yPos - 1, this.type))
-								chessBoard.colorSquare(this.xPos + 1, this.yPos - 1, false);
+							if (gameLogic.isThisProtecting(chessBoard, this.xposition + 1, this.yposition - 1, this.type))
+								chessBoard.colorSquare(this.xposition + 1, this.yposition - 1, false);
 						}
 						else
-							chessBoard.colorSquare(this.xPos + 1, this.yPos - 1, false);
+							chessBoard.colorSquare(this.xposition + 1, this.yposition - 1, false);
 					}
 				}
 			}
 		}
 		else if (this.type == 2)
 		{
-			if (!gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type) && !gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+			if (!gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type) && !gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			{
-				if (this.yPos + 1 < chessBoard.getBoardHeight() && chessBoard.getBoardPosition(this.xPos, this.yPos + 1) == 0)
+				if (this.yposition + 1 < chessBoard.getBoardHeight() && chessBoard.getBoardpositionition(this.xposition, this.yposition + 1) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, this.yPos + 1, this.type))
-							chessBoard.colorSquare(this.xPos, this.yPos + 1, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, this.yposition + 1, this.type))
+							chessBoard.colorSquare(this.xposition, this.yposition + 1, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, this.yPos + 1, false);
+						chessBoard.colorSquare(this.xposition, this.yposition + 1, false);
 				}
-				if (this.isFirstTime == true && chessBoard.getBoardPosition(this.xPos, this.yPos + 2) == 0)
+				if (this.isFirstTime == true && chessBoard.getBoardpositionition(this.xposition, this.yposition + 2) == 0)
 				{
 					if (chessBoard.checkState)
 					{
-						if (gameLogic.isThisProtecting(chessBoard, this.xPos, this.yPos + 2, this.type))
-							chessBoard.colorSquare(this.xPos, this.yPos + 2, false);
+						if (gameLogic.isThisProtecting(chessBoard, this.xposition, this.yposition + 2, this.type))
+							chessBoard.colorSquare(this.xposition, this.yposition + 2, false);
 					}
 					else
-						chessBoard.colorSquare(this.xPos, this.yPos + 2, false);
+						chessBoard.colorSquare(this.xposition, this.yposition + 2, false);
 				}
 			}
-			if (!gameLogic.verticalProtection(chessBoard, this.xPos, this.yPos, this.type))
+			if (!gameLogic.verticalProtection(chessBoard, this.xposition, this.yposition, this.type))
 			{
-				if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+				if (!gameLogic.backslashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 				{
-					if (this.yPos + 1 < chessBoard.getBoardHeight() && this.xPos - 1 >= 0 && chessBoard.getBoardPosition(this.xPos - 1, this.yPos + 1) != this.type && chessBoard.getBoardPosition(this.xPos - 1, this.yPos + 1) != 0)
+					if (this.yposition + 1 < chessBoard.getBoardHeight() && this.xposition - 1 >= 0 && chessBoard.getBoardpositionition(this.xposition - 1, this.yposition + 1) != this.type && chessBoard.getBoardpositionition(this.xposition - 1, this.yposition + 1) != 0)
 					{
 						if (chessBoard.checkState)
 						{
-							if (gameLogic.isThisProtecting(chessBoard, this.xPos - 1, this.yPos + 1, this.type))
-								chessBoard.colorSquare(this.xPos - 1, this.yPos + 1, false);
+							if (gameLogic.isThisProtecting(chessBoard, this.xposition - 1, this.yposition + 1, this.type))
+								chessBoard.colorSquare(this.xposition - 1, this.yposition + 1, false);
 						}
 						else
-							chessBoard.colorSquare(this.xPos - 1, this.yPos + 1, false);
+							chessBoard.colorSquare(this.xposition - 1, this.yposition + 1, false);
 					}
 				}
-				if (!gameLogic.slashDiagonalProtection(chessBoard, this.xPos, this.yPos, this.type))
+				if (!gameLogic.slashDiagonalProtection(chessBoard, this.xposition, this.yposition, this.type))
 				{
-					if (this.yPos + 1 < chessBoard.getBoardHeight() && this.xPos + 1 < chessBoard.getBoardWidth() && chessBoard.getBoardPosition(this.xPos + 1, this.yPos + 1) != this.type && chessBoard.getBoardPosition(this.xPos + 1, this.yPos + 1) != 0)
+					if (this.yposition + 1 < chessBoard.getBoardHeight() && this.xposition + 1 < chessBoard.getBoardWidth() && chessBoard.getBoardpositionition(this.xposition + 1, this.yposition + 1) != this.type && chessBoard.getBoardpositionition(this.xposition + 1, this.yposition + 1) != 0)
 					{
 						if (chessBoard.checkState)
 						{
-							if (gameLogic.isThisProtecting(chessBoard, this.xPos + 1, this.yPos + 1, this.type))
-								chessBoard.colorSquare(this.xPos + 1, this.yPos + 1, false);
+							if (gameLogic.isThisProtecting(chessBoard, this.xposition + 1, this.yposition + 1, this.type))
+								chessBoard.colorSquare(this.xposition + 1, this.yposition + 1, false);
 						}
 						else
-							chessBoard.colorSquare(this.xPos + 1, this.yPos + 1, false);
+							chessBoard.colorSquare(this.xposition + 1, this.yposition + 1, false);
 					}
 				}
 			}

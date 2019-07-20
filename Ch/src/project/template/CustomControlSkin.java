@@ -8,8 +8,8 @@ import javafx.scene.control.Skin;
 import javafx.scene.control.SkinBase;
 
 //class definition 
-class CustomControlSkin extends SkinBase<CustomControl> implements Skin<CustomControl> {
-	public CustomControlSkin(CustomControl cc) {
+class mainControlSkin extends SkinBase<mainControl> implements Skin<mainControl> {
+	public mainControlSkin(mainControl cc) {
 		//call the super class constructor
 		super(cc);
 	}
