@@ -48,10 +48,10 @@ import javax.sound.sampled.LineUnavailableException;
 import static jdk.internal.org.objectweb.asm.commons.GeneratorAdapter.OR;
 
 
-public class ChessApplication extends Application {
+public class maingame extends Application {
         
-	private Pane sp_mainlayout;                             //layout which allows items to be positioned on top of each other
-	private CustomControl cc_custom;
+	private Pane mainlayout;                             //layout which allows items to be positionitioned on top of each other
+	private mainControl cc_custom;
         private Pane watermark;
         private Pane main_pane;
         private Pane intro_pane;
@@ -111,32 +111,24 @@ public class ChessApplication extends Application {
                 ImageView view=new ImageView(img);
                 view.setOpacity(0.1);
                 double radius=2.0;
-		sp_mainlayout = new StackPane(); 
+		mainlayout = new StackPane(); 
                
                 
                 
                 watermark=new StackPane();
                 intro_pane=new StackPane();
                 BackWater=new StackPane();
-		cc_custom = new CustomControl();
+		cc_custom = new mainControl();
                 
-		sp_mainlayout.getChildren().add(cc_custom);
-                //sp_mainlayout.getChildren().add(spacebutton);
+		mainlayout.getChildren().add(cc_custom);
+                //mainlayout.getChildren().add(spacebutton);
                 watermark.getChildren().add(view);
                 BackWater.getChildren().add(backview);
                 BackWater.setMouseTransparent(true);
                 watermark.setPickOnBounds(false);
                 watermark.setMouseTransparent(true);
                 intro_pane.getChildren().add(introview);
-                intro_pane.getChildren().add(introMarkView);
-               
-                
-               
-                
-                
-               
-                
-                
+                intro_pane.getChildren().add(introMarkView);        
                          
 	}
 	
@@ -296,16 +288,16 @@ public class ChessApplication extends Application {
                 });
                 
                 
-                sp_mainlayout.getChildren().add(spacebutton);
-                sp_mainlayout.getChildren().add(horrorbutton);
-                sp_mainlayout.getChildren().add(backbutton);
-                sp_mainlayout.getChildren().add(midnightbutton);
+                mainlayout.getChildren().add(spacebutton);
+                mainlayout.getChildren().add(horrorbutton);
+                mainlayout.getChildren().add(backbutton);
+                mainlayout.getChildren().add(midnightbutton);
                 root.getChildren().add(BackWater);
                 root.getChildren().add(view1);
                 root.getChildren().add(tickview);
                 
                 
-                StackPane main_pane=new StackPane(sp_mainlayout,watermark);
+                StackPane main_pane=new StackPane(mainlayout,watermark);
                 
                 main_pane.setPrefSize(950, 900);
                 main_pane.setLayoutX(1950/2-500+80);
